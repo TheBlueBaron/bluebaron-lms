@@ -45,7 +45,11 @@ export function Navbar() {
           <div className="flex items-center space-x-4">
             <ThemeToggle />
             {isPending ? null : session ? (
-              <UserDropdown name={session.user.name} email={session.user.email} image={session.user.image || ""} />
+              <UserDropdown
+                name={session.user.name}
+                email={session.user.email}
+                image={session.user.image ?? `https://avatar.vercel.sh/${session.user.email}`}
+              />
             ) : (
               <>
                 <Link href={"/login"} className={buttonVariants({ variant: "secondary" })}>
